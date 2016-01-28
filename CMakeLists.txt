@@ -17,7 +17,7 @@ cmake_minimum_required ( VERSION 2.8.12 )
 # project
 project ( external_xz CXX C )
 set ( ${PROJECT_NAME}_STATICLIB_VERSION 5.2.2.0 )
-set ( ${PROJECT_NAME}_DESCRIPTION "Xz (lzma) library build for Staticlibs" )
+set ( ${PROJECT_NAME}_DESCRIPTION "XZ (lzma) library build for Staticlibs" )
 set ( ${PROJECT_NAME}_URL https://github.com/staticlibs/external_lzma.git )
 
 # standalone build
