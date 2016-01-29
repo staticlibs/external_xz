@@ -28,6 +28,8 @@
 
 #ifndef _WIN32
 
+#ifndef __APPLE__
+
 /* Define to 1 if translation of program messages to the user's native
    language is requested. */
 #define ENABLE_NLS 1
@@ -44,19 +46,23 @@
 /* Define to 1 if you have the <byteswap.h> header file. */
 #define HAVE_BYTESWAP_H 1
 
+#else // __APPLE__
+
 /* Define to 1 if the system has the type `CC_SHA256_CTX'. */
-/* #undef HAVE_CC_SHA256_CTX */
+#define HAVE_CC_SHA256_CTX 1
 
 /* Define to 1 if you have the `CC_SHA256_Init' function. */
-/* #undef HAVE_CC_SHA256_INIT */
+#define HAVE_CC_SHA256_INIT 1
 
 /* Define to 1 if you have the MacOS X function CFLocaleCopyCurrent in the
    CoreFoundation framework. */
-/* #undef HAVE_CFLOCALECOPYCURRENT */
+#define HAVE_CFLOCALECOPYCURRENT 1
 
 /* Define to 1 if you have the MacOS X function CFPreferencesCopyAppValue in
    the CoreFoundation framework. */
-/* #undef HAVE_CFPREFERENCESCOPYAPPVALUE */
+#define HAVE_CFPREFERENCESCOPYAPPVALUE 1
+
+#endif // __APPLE__
 
 #endif // _WIN32
 
@@ -70,7 +76,7 @@
 //#define HAVE_CHECK_SHA256 1
 
 /* Define to 1 if you have the `clock_gettime' function. */
-#define HAVE_CLOCK_GETTIME 1
+//#define HAVE_CLOCK_GETTIME 1
 
 /* Define to 1 if you have the <CommonCrypto/CommonDigest.h> header file. */
 /* #undef HAVE_COMMONCRYPTO_COMMONDIGEST_H */
@@ -81,7 +87,7 @@
 
 /* Define to 1 if you have the declaration of `CLOCK_MONOTONIC', and to 0 if
    you don't. */
-#define HAVE_DECL_CLOCK_MONOTONIC 1
+#define HAVE_DECL_CLOCK_MONOTONIC 0
 
 /* Define to 1 if you have the declaration of `program_invocation_name', and
    to 0 if you don't. */
@@ -151,11 +157,17 @@
 /* Define to 1 if you have the <fcntl.h> header file. */
 #define HAVE_FCNTL_H 1
 
+#ifndef __APPLE__
+
 /* Define to 1 if you have the `futimens' function. */
 #define HAVE_FUTIMENS 1
 
+#else // __APPLE__
+
 /* Define to 1 if you have the `futimes' function. */
-/* #undef HAVE_FUTIMES */
+#define HAVE_FUTIMES 1
+
+#endif // __APPLE__
 
 /* Define to 1 if you have the `futimesat' function. */
 /* #undef HAVE_FUTIMESAT */
@@ -166,11 +178,17 @@
 /* Define to 1 if you have the `getopt_long' function. */
 #define HAVE_GETOPT_LONG 1
 
+#ifndef __APPLE__
+
 /* Define if the GNU gettext() function is already present or preinstalled. */
 #define HAVE_GETTEXT 1
 
+#else // __APPLE__
+
 /* Define if you have the iconv() function and it works. */
-/* #undef HAVE_ICONV */
+#define HAVE_ICONV 1
+
+#endif // __APPLE__
 
 #if __x86_64__
 /* Define to 1 if you have the <immintrin.h> header file. */
@@ -218,11 +236,15 @@
 /* Define to 1 if getopt.h declares extern int optreset. */
 /* #undef HAVE_OPTRESET */
 
+#ifndef __APPLE__
+
 /* Define to 1 if you have the `posix_fadvise' function. */
 #define HAVE_POSIX_FADVISE 1
 
 /* Define to 1 if you have the `pthread_condattr_setclock' function. */
 #define HAVE_PTHREAD_CONDATTR_SETCLOCK 1
+
+#endif // __APPLE__
 
 /* Have PTHREAD_PRIO_INHERIT. */
 #define HAVE_PTHREAD_PRIO_INHERIT 1
@@ -272,14 +294,20 @@
 /* Define to 1 if `st_atimensec' is a member of `struct stat'. */
 /* #undef HAVE_STRUCT_STAT_ST_ATIMENSEC */
 
+#ifdef __APPLE__
+
 /* Define to 1 if `st_atimespec.tv_nsec' is a member of `struct stat'. */
-/* #undef HAVE_STRUCT_STAT_ST_ATIMESPEC_TV_NSEC */
+#define HAVE_STRUCT_STAT_ST_ATIMESPEC_TV_NSEC 1
 
 /* Define to 1 if `st_atim.st__tim.tv_nsec' is a member of `struct stat'. */
 /* #undef HAVE_STRUCT_STAT_ST_ATIM_ST__TIM_TV_NSEC */
 
+#else // __APPLE__
+
 /* Define to 1 if `st_atim.tv_nsec' is a member of `struct stat'. */
 #define HAVE_STRUCT_STAT_ST_ATIM_TV_NSEC 1
+
+#endif // __APPLE__
 
 /* Define to 1 if `st_uatime' is a member of `struct stat'. */
 /* #undef HAVE_STRUCT_STAT_ST_UATIME */
@@ -421,13 +449,19 @@
    pstat_getdynamic(). */
 /* #undef TUKLIB_CPUCORES_PSTAT_GETDYNAMIC */
 
+#ifndef __APPLE__
+
 /* Define to 1 if the number of available CPU cores can be detected with
    sysconf(_SC_NPROCESSORS_ONLN) or sysconf(_SC_NPROC_ONLN). */
 #define TUKLIB_CPUCORES_SYSCONF 1
 
+#else // __APPLE__
+
 /* Define to 1 if the number of available CPU cores can be detected with
    sysctl(). */
-/* #undef TUKLIB_CPUCORES_SYSCTL */
+#define TUKLIB_CPUCORES_SYSCTL 1
+
+#endif // __APPLE__
 
 #endif // _WIN32
 
@@ -453,13 +487,19 @@
    pstat_getstatic(). */
 /* #undef TUKLIB_PHYSMEM_PSTAT_GETSTATIC */
 
+#ifndef __APPLE__
+
 /* Define to 1 if the amount of physical memory can be detected with
    sysconf(_SC_PAGESIZE) and sysconf(_SC_PHYS_PAGES). */
 #define TUKLIB_PHYSMEM_SYSCONF 1
 
+#else // __APPLE__
+
 /* Define to 1 if the amount of physical memory can be detected with sysctl().
-   */
-/* #undef TUKLIB_PHYSMEM_SYSCTL */
+ */
+#define TUKLIB_PHYSMEM_SYSCTL 1
+
+#endif // __APPLE__
 
 /* Define to 1 if the amount of physical memory can be detected with Linux
    sysinfo(). */
