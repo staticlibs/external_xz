@@ -24,6 +24,10 @@
 #include "TargetConditionals.h"
 #endif // __APPLE__
 
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
 /* Prefix for symbols exported by tuklib_*.c files */
 #define TUKLIB_SYMBOL_PREFIX lzma_
 

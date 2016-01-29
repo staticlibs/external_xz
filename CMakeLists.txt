@@ -32,6 +32,9 @@ add_custom_target ( ${PROJECT_NAME} DEPENDS lzma )
 # pkg-config
 set ( ${PROJECT_NAME}_MODULE lzma )
 set ( ${PROJECT_NAME}_PC_CFLAGS "-I${CMAKE_CURRENT_LIST_DIR}/resources/xz_include -I${CMAKE_CURRENT_LIST_DIR}/xz/src/liblzma/api" )
+if ( ${CMAKE_C_COMPILER_ID}x MATCHES "MSVCx" )
+    set ( ${PROJECT_NAME}_PC_CFLAGS "${${PROJECT_NAME}_PC_CFLAGS} -DLZMA_API_STATIC" )
+endif ( )
 set ( ${PROJECT_NAME}_PC_LIBS "-L${CMAKE_LIBRARY_OUTPUT_DIRECTORY} -llzma" )
 configure_file ( ${CMAKE_CURRENT_LIST_DIR}/resources/pkg-config.in 
         ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/pkgconfig/lzma.pc )

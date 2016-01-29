@@ -53,7 +53,7 @@ void test_lzma2() {
             if (ret_xz == LZMA_STREAM_END) break;
         }
         lzma_end(std::addressof(strm));
-        compressed.resize(strm.total_out);
+        compressed.resize(static_cast<unsigned int>(strm.total_out));
         slassert(68 == compressed.size());
     }
     {
@@ -76,7 +76,7 @@ void test_lzma2() {
             if (ret_xz == LZMA_STREAM_END) break;
         }
         lzma_end(std::addressof(strm));
-        decompressed.resize(strm.total_out);
+        decompressed.resize(static_cast<unsigned int>(strm.total_out));
         slassert(11 == decompressed.size());
         slassert(data == decompressed);
     }

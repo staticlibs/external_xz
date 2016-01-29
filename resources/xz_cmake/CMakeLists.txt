@@ -139,7 +139,6 @@ target_compile_definitions ( ${PROJECT_NAME} PRIVATE -DHAVE_CONFIG_H )
 if ( ${CMAKE_C_COMPILER_ID} MATCHES "(GNU|Clang)" )
     target_compile_options ( ${PROJECT_NAME} PRIVATE --std=gnu99 )
 elseif ( ${CMAKE_C_COMPILER_ID}x MATCHES "MSVCx" )
-#    target_compile_definitions ( ${PROJECT_NAME} PRIVATE
-#            -D_CRT_SECURE_NO_DEPRECATE  
-#            -D_CRT_NONSTDC_NO_DEPRECATE )
+    target_compile_definitions ( ${PROJECT_NAME} PRIVATE
+            -DLZMA_API_STATIC )
 endif ( )
