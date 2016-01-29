@@ -20,6 +20,10 @@
 /* Define if building universal (internal helper macro) */
 /* #undef AC_APPLE_UNIVERSAL_BUILD */
 
+#ifdef __APPLE__
+#include "TargetConditionals.h"
+#endif // __APPLE__
+
 /* Prefix for symbols exported by tuklib_*.c files */
 #define TUKLIB_SYMBOL_PREFIX lzma_
 
@@ -49,10 +53,10 @@
 #else // __APPLE__
 
 /* Define to 1 if the system has the type `CC_SHA256_CTX'. */
-#define HAVE_CC_SHA256_CTX 1
+// #define HAVE_CC_SHA256_CTX 1
 
 /* Define to 1 if you have the `CC_SHA256_Init' function. */
-#define HAVE_CC_SHA256_INIT 1
+// #define HAVE_CC_SHA256_INIT 1
 
 /* Define to 1 if you have the MacOS X function CFLocaleCopyCurrent in the
    CoreFoundation framework. */
@@ -362,8 +366,12 @@
 
 #ifndef _WIN32
 
+#if !defined(__APPLE__) || !(TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR)
+
 /* Define to 1 if _mm_movemask_epi8 is available. */
 #define HAVE__MM_MOVEMASK_EPI8 1
+
+#endif
 
 /* Define to the sub-directory where libtool stores uninstalled libraries. */
 #define LT_OBJDIR ".libs/"
