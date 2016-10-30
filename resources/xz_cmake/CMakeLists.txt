@@ -140,5 +140,7 @@ if ( ${CMAKE_C_COMPILER_ID} MATCHES "(GNU|Clang)" )
     target_compile_options ( ${PROJECT_NAME} PRIVATE --std=gnu99 )
 elseif ( ${CMAKE_C_COMPILER_ID}x MATCHES "MSVCx" )
     target_compile_definitions ( ${PROJECT_NAME} PRIVATE
-            -DLZMA_API_STATIC )
+            -DLZMA_API_STATIC
+            -Dinline=_inline
+            -Drestrict=_restrict )
 endif ( )
