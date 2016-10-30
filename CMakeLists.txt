@@ -16,7 +16,7 @@ cmake_minimum_required ( VERSION 2.8.12 )
 
 # project
 project ( external_xz CXX C )
-set ( ${PROJECT_NAME}_STATICLIB_VERSION 5.2.2.0 )
+set ( ${PROJECT_NAME}_STATICLIB_VERSION 5.1.2-1 )
 set ( ${PROJECT_NAME}_DESCRIPTION "XZ (lzma) library build for Staticlibs" )
 set ( ${PROJECT_NAME}_URL https://github.com/staticlibs/external_lzma.git )
 
@@ -38,3 +38,5 @@ endif ( )
 set ( ${PROJECT_NAME}_PC_LIBS "-L${CMAKE_LIBRARY_OUTPUT_DIRECTORY} -llzma" )
 configure_file ( ${CMAKE_CURRENT_LIST_DIR}/resources/pkg-config.in 
         ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/pkgconfig/liblzma.pc )
+configure_file ( ${CMAKE_CURRENT_LIST_DIR}/resources/pkg-config.in 
+        ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/pkgconfig/lzma.pc )

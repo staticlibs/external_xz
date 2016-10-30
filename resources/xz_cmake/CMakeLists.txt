@@ -62,7 +62,7 @@ add_library ( ${PROJECT_NAME} STATIC
         ${${PROJECT_NAME}_SRCDIR}/src/liblzma/common/filter_encoder.c
         ${${PROJECT_NAME}_SRCDIR}/src/liblzma/common/filter_flags_decoder.c
         ${${PROJECT_NAME}_SRCDIR}/src/liblzma/common/filter_flags_encoder.c
-        ${${PROJECT_NAME}_SRCDIR}/src/liblzma/common/hardware_cputhreads.c
+        # ${${PROJECT_NAME}_SRCDIR}/src/liblzma/common/hardware_cputhreads.c
         ${${PROJECT_NAME}_SRCDIR}/src/liblzma/common/hardware_physmem.c
         ${${PROJECT_NAME}_SRCDIR}/src/liblzma/common/index.c
         ${${PROJECT_NAME}_SRCDIR}/src/liblzma/common/index_decoder.c
