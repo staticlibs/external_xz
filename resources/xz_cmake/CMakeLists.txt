@@ -139,6 +139,8 @@ target_compile_definitions ( ${PROJECT_NAME} PRIVATE -DHAVE_CONFIG_H )
 if ( ${CMAKE_C_COMPILER_ID} MATCHES "(GNU|Clang)" )
     target_compile_options ( ${PROJECT_NAME} PRIVATE --std=gnu99 )
 elseif ( ${CMAKE_C_COMPILER_ID}x MATCHES "MSVCx" )
+    target_compile_options ( ${PROJECT_NAME} PRIVATE
+            /wd4028 /wd4113 /wd4133 )
     target_compile_definitions ( ${PROJECT_NAME} PRIVATE
             -DLZMA_API_STATIC
             -Dinline=_inline
