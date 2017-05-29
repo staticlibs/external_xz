@@ -27,6 +27,7 @@ endif ( )
 
 # xz subproject
 add_subdirectory ( ${CMAKE_CURRENT_LIST_DIR}/resources/xz_cmake ${CMAKE_CURRENT_BINARY_DIR}/xz )
+set_target_properties ( lzma PROPERTIES FOLDER "deps" )
 add_custom_target ( ${PROJECT_NAME} DEPENDS lzma )
 
 # pkg-config
