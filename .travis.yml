@@ -51,6 +51,9 @@ install:
         make
         valgrind ;
 
+    `# Android` ;
+    git clone https://github.com/staticlibs/android-ndk-r9d-arm-linux-androideabi-4.8.git ../android-ndk ;
+
     fi
 
 before_script:
@@ -70,7 +73,7 @@ script:
     set +e ;
     pushd build-standalone ;
     set -e ;
-    cmake ../external_xz  -DCMAKE_CXX_FLAGS="--std=c++11" ;
+    cmake ../external_xz ;
     make ;
     set +e;
     popd ;
@@ -86,17 +89,27 @@ script:
     `# Ubuntu` ;
     lsb_release -a ;
     pushd build-standalone ;
-    cmake ../external_xz -DCMAKE_CXX_FLAGS="--std=c++11" ;
+    cmake ../external_xz ;
     make ;
     popd ;
     pushd build ;
     cmake ../external_xz/test -DCMAKE_BUILD_TYPE=Release ;
     make all test ;
+    popd ;
 
     `# Fedora` ;
     $D cat /etc/fedora-release ;
+    $D cmake /src/external_xz ;
+    $D make ;
+    $D sh -c "rm -rf /root && mkdir /root" ;
     $D cmake /src/external_xz/test -DCMAKE_BUILD_TYPE=Release ;
     $D make all test ;
+
+    `# Android` ;
+    mkdir build-android ;
+    pushd build-android ;
+    cmake ../external_xz/test -DCMAKE_BUILD_TYPE=Release -DSTATICLIB_TOOLCHAIN=android_armeabi_gcc -DANDROID_TOOLCHAIN_DIR=`pwd`/../android-ndk ;
+    make ;
 
     fi
 
