@@ -6,10 +6,8 @@ Xz library build for Staticlibs
 
 This project is a part of [Staticlibs](http://staticlibs.net/).
 
-This project contains a CMake build file for building the [XZ library](http://tukaani.org/xz/).
-
-[XZ sources imported from CentOS lookaside](https://github.com/ojdkbuild/lookaside_xz.git)
-are used as a submodule of this project.
+This project contains a CMake build file for building the [XZ library](http://tukaani.org/xz/) that
+can be used to build sources imported from [CentOS lookaside](https://github.com/staticlibs/lookaside_xz.git).
 
 How to build
 ------------
@@ -20,7 +18,8 @@ To build the library on Windows using Visual Studio 2013 Express run the followi
 Visual Studio development command prompt 
 (`C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\Tools\Shortcuts\VS2013 x86 Native Tools Command Prompt`):
 
-    git clone --recursive https://github.com/staticlibs/external_xz.git
+    git clone https://github.com/staticlibs/external_xz.git
+    git clone https://github.com/staticlibs/lookaside_xz.git
     cd external_xz
     mkdir build
     cd build
@@ -37,6 +36,11 @@ This project is released under the [Apache License 2.0](http://www.apache.org/li
 
 Changelog
 ---------
+
+**2018-02-28**
+
+ * version 5.1.2-3
+ * drop submodule
 
 **2017-12-24**
 

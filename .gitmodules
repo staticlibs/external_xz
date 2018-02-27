@@ -1,3 +1,0 @@
-[submodule "xz"]
-	path = xz
-	url = https://github.com/ojdkbuild/lookaside_xz.git

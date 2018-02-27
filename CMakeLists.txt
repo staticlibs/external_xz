@@ -16,7 +16,7 @@ cmake_minimum_required ( VERSION 2.8.12 )
 
 # project
 project ( external_xz CXX C )
-set ( ${PROJECT_NAME}_STATICLIB_VERSION 5.1.2-2 )
+set ( ${PROJECT_NAME}_STATICLIB_VERSION 5.1.2-3 )
 set ( ${PROJECT_NAME}_DESCRIPTION "XZ (lzma) library build for Staticlibs" )
 set ( ${PROJECT_NAME}_URL https://github.com/staticlibs/external_lzma.git )
 
@@ -32,7 +32,7 @@ add_custom_target ( ${PROJECT_NAME} DEPENDS lzma )
 
 # pkg-config
 set ( ${PROJECT_NAME}_MODULE liblzma )
-set ( ${PROJECT_NAME}_PC_CFLAGS "-I${CMAKE_CURRENT_LIST_DIR}/resources/xz_include -I${CMAKE_CURRENT_LIST_DIR}/xz/src/liblzma/api" )
+set ( ${PROJECT_NAME}_PC_CFLAGS "-I${CMAKE_CURRENT_LIST_DIR}/resources/xz_include -I${lzma_LOOKASIDE_DIR}/src/liblzma/api" )
 if ( ${CMAKE_C_COMPILER_ID}x MATCHES "MSVCx" )
     set ( ${PROJECT_NAME}_PC_CFLAGS "${${PROJECT_NAME}_PC_CFLAGS} -DLZMA_API_STATIC" )
 endif ( )
